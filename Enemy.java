@@ -2,6 +2,7 @@ public class Enemy {
     //fields - what an enemy IS
     private String name;
     private int health;
+    private int ac; //armor class (1-20+)
 
     //attack 1
     private String attack1Name;
@@ -15,9 +16,18 @@ public class Enemy {
 
 
     //constructor
-    public Enemy(String name, int health) {
+    public Enemy(String name, int health, int ac) {
         this.name = name;
         this.health = health;
+        this.ac = ac;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAc() {
+        return ac;
     }
 
     public void attack(Player player) {
