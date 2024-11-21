@@ -29,6 +29,9 @@ public class Main {
             if(choice.equals("slash")) {
                 p1.slash(e1);
             }
+            else if(choice.equals("bash")) {
+                p1.bash(e1);
+            }
 
             //check if the player killed the enemy
             if(!e1.alive()) {
