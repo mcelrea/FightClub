@@ -3,6 +3,7 @@ public class Player {
     private String name;
     private int health;
     private int ac; //armor class
+    private int hpPotions = 1;
 
     //(2) constructor - what requirements for new Players?
     public Player(String name) {
@@ -59,6 +60,27 @@ public class Player {
         }
     }
 
+    public void useHpPotion() {
+        if(hpPotions == 0) {
+            System.out.println("You tried to drink a health potion, but you've made a dire mistake");
+            System.out.println("YOU HAVE NONE");
+        }
+        else {
+            hpPotions--;
+            int howMuchHP = Dice.rollDice("1d4+2");
+            health += howMuchHP;
+            System.out.println("You drank a health potion. You regain " + howMuchHP + " health");
+        }
+    }
+
+    public void addPotion() {
+        hpPotions++;
+    }
+
+    public void addOneToAC() {
+        ac++;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -69,7 +91,8 @@ public class Player {
     public String toString() {
         return name + "\n" +
                 "-----------------\n" +
-                "Health: " + health + "\n" +
-                "AC:     " + ac;
+                "Health:   " + health + "\n" +
+                "AC:       " + ac + "\n" +
+                "Potions:  " + hpPotions;
     }
 }

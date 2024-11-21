@@ -38,6 +38,9 @@ public class Main {
             else if(choice.equals("status")) {
                 System.out.println(p1);
             }
+            else if(choice.equals("potion")) {
+                p1.useHpPotion();
+            }
             else if(choice.equals("quit")) {
                 p1.damage(10000);
             }
@@ -45,6 +48,7 @@ public class Main {
             //check if the player killed the enemy
             if(!e1.alive()) {
                 System.out.println("You vanquished the enemy");
+                e1.dies(p1);
                 e1 = createNewEnemy(2);
             }
             else if (canEnemyAttack) { //the enemy is still alive
@@ -61,8 +65,21 @@ public class Main {
     }
 
     public static Enemy createNewEnemy(int level) {
-        Enemy temp = new Enemy("Enemy", 3+(level*2), 11);
-        temp.setAttack1("Slash", level*2, "2d6+1");
+        int randomNum = (int)(1 + Math.random() * 3);
+
+        Enemy temp;
+        if(randomNum == 1) {
+            temp = new Enemy("Zombie", 4 + (level * 2), 7);
+            temp.setAttack1("Bite", level * 2, "1d4+1");
+        }
+        if(randomNum == 2) {
+            temp = new Enemy("Small Dragon", 10 + (level * 2), 14);
+            temp.setAttack1("Fire Breath", level * 2, "2d4+4");
+        }
+        else {
+            temp = new Enemy("Goblin", 3 + (level * 2), 11);
+            temp.setAttack1("Slash", level * 2, "2d6+1");
+        }
 
         System.out.println("\nA NEW ENEMY HAS APPEARED.....\n");
         System.out.println(temp);

@@ -64,6 +64,22 @@ public class Enemy {
         attack1Damage = damageDie;
     }
 
+    public void dies(Player p) {
+        if(name.equals("Skeleton") || name.equals("Zombie") || name.equals("Goblin")) {
+            int chanceForPotion = (int)(1 + Math.random() * 100);
+            if(chanceForPotion <= 10) {
+                System.out.println(name + " dropped a potion!!!");
+                p.addPotion();
+            }
+        }
+        else if(name.equals("Small Dragon")) {
+            System.out.println("Small Dragon drops a potion");
+            p.addPotion();
+            System.out.println("You've leveled up, +1 AC!!!!!");
+            p.addOneToAC();
+        }
+    }
+
     public String toString() {
         return name + "\n" +
                 "------------------\n" +
