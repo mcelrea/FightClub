@@ -23,14 +23,20 @@ public class Main {
         System.out.println();
 
         String choice = getPlayerChoice();
+        boolean canEnemyAttack = false;
         //main game loop
         while(p1.getHealth() > 0) {
             //handle player choice
             if(choice.equals("slash")) {
                 p1.slash(e1);
+                canEnemyAttack = true;
             }
             else if(choice.equals("bash")) {
                 p1.bash(e1);
+                canEnemyAttack = true;
+            }
+            else if(choice.equals("status")) {
+                System.out.println(p1);
             }
             else if(choice.equals("quit")) {
                 p1.damage(10000);
@@ -41,11 +47,12 @@ public class Main {
                 System.out.println("You vanquished the enemy");
                 e1 = createNewEnemy(2);
             }
-            else { //the enemy is still alive
+            else if (canEnemyAttack) { //the enemy is still alive
                 e1.attack(p1);
             }
 
             if(p1.getHealth() > 0) {
+                canEnemyAttack = false;
                 choice = getPlayerChoice();
             }
         }

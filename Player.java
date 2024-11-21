@@ -69,6 +69,7 @@ public class Player {
     public String toString() {
         return name + "\n" +
                 "-----------------\n" +
-                "health: " + health;
+                "Health: " + health + "\n" +
+                "AC:     " + ac;
     }
 }
