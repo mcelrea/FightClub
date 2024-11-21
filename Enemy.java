@@ -65,6 +65,9 @@ public class Enemy {
     }
 
     public String toString() {
-        return name + " (hp:" + health + ")";
+        return name + "\n" +
+                "------------------\n" +
+                "Health:  " + health + "\n" +
+                "AC:      " + ac;
     }
 }

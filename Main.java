@@ -32,6 +32,9 @@ public class Main {
             else if(choice.equals("bash")) {
                 p1.bash(e1);
             }
+            else if(choice.equals("quit")) {
+                p1.damage(10000);
+            }
 
             //check if the player killed the enemy
             if(!e1.alive()) {
@@ -53,11 +56,15 @@ public class Main {
     public static Enemy createNewEnemy(int level) {
         Enemy temp = new Enemy("Enemy", 3+(level*2), 11);
         temp.setAttack1("Slash", level*2, "2d6+1");
+
+        System.out.println("\nA NEW ENEMY HAS APPEARED.....\n");
+        System.out.println(temp);
+
         return temp;
     }
 
     public static String getPlayerChoice() {
-        System.out.print("Enter choice: ");
+        System.out.print("\nEnter choice: ");
         String choice = scrn.next();
         return choice;
     }
